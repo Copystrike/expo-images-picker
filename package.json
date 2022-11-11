@@ -9,9 +9,7 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "pretty": "prettier --write src",
-    "storybook": "start-storybook -p 7007",
-    "build-storybook": "build-storybook"
+    "pretty": "prettier --write src"
   },
   "dependencies": {
     "expo": "^45.0.0",
@@ -22,13 +20,6 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@expo/vector-icons": "^13.0.0",
-    "@storybook/addon-actions": "^5.3",
-    "@storybook/addon-knobs": "^5.3",
-    "@storybook/addon-links": "^5.3",
-    "@storybook/addon-ondevice-actions": "^5.3.23",
-    "@storybook/addon-ondevice-knobs": "^5.3.26",
-    "@storybook/react-native": "^5.3.27",
-    "@storybook/react-native-server": "^5.3.23",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.67.6",
     "@types/styled-components": "^5.1.11",
