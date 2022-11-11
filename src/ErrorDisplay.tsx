@@ -1,73 +1,59 @@
-import React from 'react'
-import styled from 'styled-components/native'
-import { ErrorTypes } from './Types'
-import { Button, Linking } from 'react-native'
+import React from 'react';
+import styled from 'styled-components/native';
+import { ErrorTypes } from './Types';
+import { Button, Linking } from 'react-native';
 
-const ErrorDisplay = ({
-    errorType,
-    errorMessages,
-    errorTextColor,
-}: ErrorTypes) => {
-    if (!errorType) return <Container />
+const ErrorDisplay = ({ errorType, errorMessages, errorTextColor }: ErrorTypes) => {
+    if (!errorType) return <Container />;
     return (
         <Container>
             {errorType === 'hasNoAssets' && (
                 <PermissionsError>
-                    <Text color={errorTextColor || 'black'}>
-                        {errorMessages?.hasNoAssets ||
-                            'There are no assets to display.'}
-                    </Text>
+                    <Text color={errorTextColor || 'black'}>{errorMessages?.hasNoAssets || 'There are no assets to display.'}</Text>
                 </PermissionsError>
             )}
 
             {errorType === 'hasErrorWithPermissions' && (
                 <PermissionsError>
                     <Text color={errorTextColor || 'black'}>
-                        {errorMessages?.hasErrorWithPermissions ||
-                            'Please Allow media and files permissions and try again.'}
+                        {errorMessages?.hasErrorWithPermissions || 'Please Allow media and files permissions and try again.'}
                     </Text>
                     <Button
                         title="Open Settings"
                         onPress={() => {
-                            Linking.openSettings()
+                            Linking.openSettings();
                         }}
                     />
                 </PermissionsError>
             )}
             {errorType === 'hasErrorWithLoading' && (
                 <LoadingAssetsError>
-                    <Text color={errorTextColor || 'black'}>
-                        {errorMessages?.hasErrorWithLoading ||
-                            'There was an error loading assets.'}
-                    </Text>
+                    <Text color={errorTextColor || 'black'}>{errorMessages?.hasErrorWithLoading || 'There was an error loading assets.'}</Text>
                 </LoadingAssetsError>
             )}
             {errorType === 'hasErrorWithResizing' && (
                 <ResizeImagesError>
-                    <Text color={errorTextColor || 'black'}>
-                        {errorMessages?.hasErrorWithResizing ||
-                            'There was an error resize assets.'}
-                    </Text>
+                    <Text color={errorTextColor || 'black'}>{errorMessages?.hasErrorWithResizing || 'There was an error resize assets.'}</Text>
                 </ResizeImagesError>
             )}
         </Container>
-    )
-}
+    );
+};
 
 const Text = styled.Text<{ color: string }>`
     color: ${({ color }) => color || 'black'};
     margin: 10px;
-`
+`;
 const PermissionsError = styled.View`
     width: 90%;
-`
+`;
 
-const LoadingAssetsError = styled.View``
-const ResizeImagesError = styled.View``
+const LoadingAssetsError = styled.View``;
+const ResizeImagesError = styled.View``;
 
 const Container = styled.View`
     justify-content: center;
     align-items: center;
-`
+`;
 
-export default ErrorDisplay
+export default ErrorDisplay;

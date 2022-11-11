@@ -1,0 +1,8 @@
+{
+    "tabWidth": 4,
+    "semi": true,
+    "printWidth": 155,
+    "proseWrap": "preserve",
+    "singleQuote": true,
+    "parser": "typescript"
+}

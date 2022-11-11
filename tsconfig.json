@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
     "strictNullChecks": true,
     "target": "es5",
@@ -7,11 +9,19 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
-    "lib": ["es2015", "dom"],
+    "lib": [
+      "es2015",
+      "dom"
+    ],
     "rootDir": "src",
     "jsx": "react",
-    "allowSyntheticDefaultImports": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src"
+, "index.ts"  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "extends": "expo/tsconfig.base"
 }
