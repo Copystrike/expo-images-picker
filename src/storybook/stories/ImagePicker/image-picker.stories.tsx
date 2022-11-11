@@ -22,12 +22,6 @@ storiesOf('image-picker', module)
                     maxSelection: 1,
                     portraitCols: 4,
                     landscapeCols: 4,
-                    displayAssets: (assets: CameraRollAsset[]) => {
-                        assets.forEach((asset) => {
-                            asset.enabled = asset.mediaType === MediaType.photo;
-                        });
-                        return assets;
-                    },
                 }),
                 []
             );
