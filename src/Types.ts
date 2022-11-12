@@ -71,7 +71,6 @@ export type iconType = {
 
 export interface CameraRollAsset extends Asset {
     enabled: boolean;
-    selected: boolean;
 }
 
 export interface SelectedIconType extends iconType {
