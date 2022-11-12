@@ -68,15 +68,15 @@ export type iconType = {
     color: string;
     size: number;
 };
+export interface SelectedIconType extends iconType {
+    bg: string;
+    opacity: number;
+}
 
 export interface CameraRollAsset extends Asset {
     enabled: boolean;
 }
 
-export interface SelectedIconType extends iconType {
-    bg: string;
-    opacity: number;
-}
 
 export type NavigatorType = {
     Texts: {
