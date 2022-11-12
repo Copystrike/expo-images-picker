@@ -107,14 +107,14 @@ const AssetsSelector = ({ Resize, Settings, Errors, Styles, Navigator, CustomNav
     }, []);
 
     const onClickUseCallBack = useCallback((itemAsset: ItemType) => {
-        Navigator?.preOnClick && Navigator.preOnClick(itemAsset);
+        Settings?.preOnClick && Settings.preOnClick(itemAsset);
         setSelectedItems((selectedItems) => {
             const alreadySelected = selectedItems.indexOf(itemAsset.id) >= 0;
             if (itemAsset.enabled && selectedItems.length >= Settings.maxSelection && !alreadySelected) return selectedItems;
             if (alreadySelected) return selectedItems.filter((item) => item !== itemAsset.id);
             else return [...selectedItems, itemAsset.id];
         });
-        Navigator?.onClick && Navigator.onClick(itemAsset);
+        Settings?.onClick && Settings.onClick(itemAsset);
     }, []);
 
     useEffect(() => {

@@ -35,6 +35,8 @@ export type SettingsType = {
     landscapeCols: number;
     getImageMetaData: boolean;
     displayAssets?: (assets: CameraRollAsset[]) => CameraRollAsset[];
+    onClick?(itemType: ItemType): () => void;
+    preOnClick?(itemType: ItemType): () => void;
 };
 
 export type ErrorsType = {
@@ -90,8 +92,6 @@ export type NavigatorType = {
     buttonStyle: StyleProp<ViewStyle>;
     onBack(): void;
     onSuccess(data?: any): void;
-    onClick(itemType: ItemType): () => void;
-    preOnClick(itemType: ItemType): () => void;
 };
 
 export interface IScreen {
