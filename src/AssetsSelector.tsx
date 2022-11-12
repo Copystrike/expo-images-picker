@@ -107,7 +107,7 @@ const AssetsSelector = ({ Resize, Settings, Errors, Styles, Navigator, CustomNav
     }, []);
 
     const onClickUseCallBack = useCallback((itemAsset: ItemType) => {
-        Settings?.preOnClick && Settings.preOnClick(itemAsset);
+        Settings?.onPreClick && Settings.onPreClick(itemAsset);
         setSelectedItems((selectedItems) => {
             const alreadySelected = selectedItems.indexOf(itemAsset.id) >= 0;
             if (!itemAsset.enabled || (selectedItems.length >= Settings.maxSelection && !alreadySelected)) return selectedItems;

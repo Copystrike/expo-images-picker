@@ -36,7 +36,7 @@ export type SettingsType = {
     getImageMetaData: boolean;
     displayAssets?: (assets: CameraRollAsset[]) => CameraRollAsset[];
     onClick?: (itemType: ItemType) => void;
-    preOnClick?: (itemType: ItemType) => void;
+    onPreClick?: (itemType: ItemType) => void;
 };
 
 export type ErrorsType = {
