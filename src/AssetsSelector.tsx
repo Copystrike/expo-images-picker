@@ -115,7 +115,6 @@ const AssetsSelector = ({ Resize, Settings, Errors, Styles, Navigator, CustomNav
             else return [...selectedItems, itemAsset.id];
         });
         Navigator?.onClick && Navigator.onClick(itemAsset);
-
     }, []);
 
     useEffect(() => {
