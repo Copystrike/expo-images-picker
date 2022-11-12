@@ -69,6 +69,7 @@ export type iconType = {
 
 export interface CameraRollAsset extends Asset {
     enabled: boolean;
+    selected: boolean;
 }
 
 export interface SelectedIconType extends iconType {
@@ -152,7 +153,7 @@ export interface ItemType {
     disabledAsset: disabledAssetType;
     videoIcon: VideoIcon;
     enabled: boolean;
-    onClick(id: string): void;
+    onClick(id: ItemType): void;
 }
 
 export type AssetListPropTypes = {
@@ -164,7 +165,7 @@ export type AssetListPropTypes = {
     selectedIcon: SelectedIcon;
     disabledAsset: disabledAssetType;
     videoIcon: VideoIcon;
-    onClick(id: string): void;
+    onClick(id: ItemType): void;
     getMoreAssets(): void;
 };
 

@@ -1,48 +1,41 @@
 import React, { memo } from 'react';
-import { Text } from 'react-native';
 import styled from 'styled-components/native';
 import { ItemType } from './Types';
 
-export const MemoizedAssetItem = memo(
-    ({ id, screen, cols, selectedIndex, image, mediaType, onClick, margin, selectedIcon, disabledAsset, videoIcon, enabled }: ItemType) => {
-        return (
-            <ItemContainer margin={margin} screen={screen} cols={cols} onPress={() => onClick(id)}>
-                {mediaType === 'video' && (
-                    <MediaTypeVideo margin={margin}>
-                        {videoIcon.Component && videoIcon.iconName && (
-                            <videoIcon.Component name={videoIcon.iconName} size={videoIcon.size} color={videoIcon.color} />
-                        )}
-                    </MediaTypeVideo>
-                )}
-                {enabled && selectedIndex >= 0 && (
-                    <Selected opacity={selectedIcon.opacity} selectionColor={selectedIcon.bg} margin={margin}>
-                        {selectedIcon.Component && selectedIcon.iconName && (
-                            <selectedIcon.Component
-                                name={selectedIcon.iconName}
-                                size={selectedIcon.size}
-                                color={selectedIcon.color}
-                                index={selectedIndex}
-                            />
-                        )}
-                    </Selected>
-                )}
-                {!enabled && (
-                    <Selected opacity={disabledAsset.opacity} selectionColor={disabledAsset.bg} margin={margin}>
-                        {disabledAsset.Component && disabledAsset.iconName && (
-                            <disabledAsset.Component
-                                name={disabledAsset.iconName}
-                                size={disabledAsset.size}
-                                color={disabledAsset.color}
-                                index={selectedIndex}
-                            />
-                        )}
-                    </Selected>
-                )}
-                <Image source={{ uri: image }} />
-            </ItemContainer>
-        );
-    }
-);
+export const MemoizedAssetItem = memo((itemtype: ItemType) => {
+    const { screen, cols, selectedIndex, image, mediaType, onClick, margin, selectedIcon, disabledAsset, videoIcon, enabled }: ItemType = itemtype;
+    return (
+        <ItemContainer margin={margin} screen={screen} cols={cols} onPress={() => onClick(itemtype)}>
+            {mediaType === 'video' && (
+                <MediaTypeVideo margin={margin}>
+                    {videoIcon.Component && videoIcon.iconName && (
+                        <videoIcon.Component name={videoIcon.iconName} size={videoIcon.size} color={videoIcon.color} />
+                    )}
+                </MediaTypeVideo>
+            )}
+            {enabled && selectedIndex >= 0 && (
+                <Selected opacity={selectedIcon.opacity} selectionColor={selectedIcon.bg} margin={margin}>
+                    {selectedIcon.Component && selectedIcon.iconName && (
+                        <selectedIcon.Component name={selectedIcon.iconName} size={selectedIcon.size} color={selectedIcon.color} index={selectedIndex} />
+                    )}
+                </Selected>
+            )}
+            {!enabled && (
+                <Selected opacity={disabledAsset.opacity} selectionColor={disabledAsset.bg} margin={margin}>
+                    {disabledAsset.Component && disabledAsset.iconName && (
+                        <disabledAsset.Component
+                            name={disabledAsset.iconName}
+                            size={disabledAsset.size}
+                            color={disabledAsset.color}
+                            index={selectedIndex}
+                        />
+                    )}
+                </Selected>
+            )}
+            <Image source={{ uri: image }} />
+        </ItemContainer>
+    );
+});
 
 const Image = styled.Image`
     width: 100%;
