@@ -7,7 +7,7 @@ import { AssetList } from './AssetList';
 import DefaultTopNavigator from './Navigator';
 import * as ImageManipulator from 'expo-image-manipulator';
 
-import { AssetSelectorPropTypes, CameraRollAsset, IAssetSelectorError, IScreen, IWidget, PagedInfo, ResizeType } from './Types';
+import { AssetSelectorPropTypes, CameraRollAsset, IAssetSelectorError, IScreen, ItemType, IWidget, PagedInfo, ResizeType } from './Types';
 import { ImageResult } from 'expo-image-manipulator';
 import ErrorDisplay from './ErrorDisplay';
 import { Spinner } from './Spinner';
@@ -106,13 +106,16 @@ const AssetsSelector = ({ Resize, Settings, Errors, Styles, Navigator, CustomNav
         }
     }, []);
 
-    const onClickUseCallBack = useCallback((id: string) => {
+    const onClickUseCallBack = useCallback((itemAsset: ItemType) => {
+        Navigator?.preOnClick && Navigator.preOnClick(itemAsset);
         setSelectedItems((selectedItems) => {
-            const alreadySelected = selectedItems.indexOf(id) >= 0;
-            if (selectedItems.length >= Settings.maxSelection && !alreadySelected) return selectedItems;
-            if (alreadySelected) return selectedItems.filter((item) => item !== id);
-            else return [...selectedItems, id];
+            const alreadySelected = selectedItems.indexOf(itemAsset.id) >= 0;
+            if (itemAsset.enabled && selectedItems.length >= Settings.maxSelection && !alreadySelected) return selectedItems;
+            if (alreadySelected) return selectedItems.filter((item) => item !== itemAsset.id);
+            else return [...selectedItems, itemAsset.id];
         });
+        Navigator?.onClick && Navigator.onClick(itemAsset);
+
     }, []);
 
     useEffect(() => {

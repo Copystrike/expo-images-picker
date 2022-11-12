@@ -3,7 +3,16 @@ import { Text } from 'react-native';
 import styled from 'styled-components/native';
 import { NavigatorType } from './Types';
 
-const Navigator = ({ Texts, selected, onBack, midTextColor, onSuccess, minSelection, buttonTextStyle, buttonStyle }: NavigatorType) => {
+const Navigator = ({
+    Texts,
+    selected,
+    onBack,
+    midTextColor,
+    onSuccess,
+    minSelection,
+    buttonTextStyle,
+    buttonStyle,
+}: Omit<NavigatorType, 'preOnClick' | 'onClick'>) => {
     const handleActionRequest = () => {
         if (!minSelection) return onSuccess();
         if (selected) {
